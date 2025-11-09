@@ -1,0 +1,16 @@
+services:
+  v1:
+    back_end:
+      build_id: # Paste the build ID of the Cloud Build for back end V1
+      service_url: # Paste the URL of the Cloud Run service for back end V1
+    front_end:
+      build_id: # Paste the build ID of the Cloud Build for front end V1
+      service_url: # Paste the URL of the Cloud Run service for front end V1
+
+  v2:
+    back_end:
+      build_id: # Paste the build ID of the Cloud Build for back end V2
+      service_url: # Paste the URL of the Cloud Run service for back end V2
+    front_end:
+      build_id: # Paste the build ID of the Cloud Build for front end V2
+      service_url: # Paste the URL of the Cloud Run service for front end V2
