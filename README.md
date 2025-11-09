@@ -1,25 +1,4 @@
-# Homework $5$ 
-
-Assignment scoring:
-
-| Section                       | Score |
-|-------------------------------|:-----:|
-| Question 1                    |  40   |
-| Question 2                    |   5   |
-| Question 3                    |  10   |
-| Question 4                    |   6   |
-| Question 5                    |   6   |
-| Question 6                    |  10   |
-| Question 7                    |  10   |
-| Question 8                    |   8   |
-| Question 9                    |   5   |
-
-<!-- This should total to 100 -->
-
-In general your homework will be autograded, i.e. you must **not** modify the signature of the defined 
-functions (same inputs and outputs).
-
-## Background
+# Goal
 
 The goal of this assignment is to get experience working with a cloud provider (in this case, Google Cloud) in order to build and deploy machine learning applications.
 
@@ -27,14 +6,16 @@ Specifically, we will be working with [Google Cloud Build](https://cloud.google.
 
 Our application consists of a backend (Flask App) and frontend (Streamlit App) component that will be built into separate Docker images. The frontend will allow us to submit a URL of an image, which will be sent to the backend for classification by an ML model.
 
-We will then use [Google Cloud Run](https://cloud.google.com/run) in order to deploy each component of the application to the web.
+We'll then use [Google Cloud Run](https://cloud.google.com/run) in order to deploy each component of the application to the web.
+We'll also be answering some questions on the results in `SHORT_ANSWER_TEMPLATE.md`
 
-
-It will be your job to write the code and configuration files required to:
+It will be our job to write the code and configuration files required to:
 - Submit builds to Google Cloud Build
 - Deploy each component to Google Cloud Run
 
-There will also be short-answer questions. Write and submit your answers in `SHORT_ANSWER_TEMPLATE.md`
+
+-------
+Below are the steps required for set-up:
 
 ### 0. Sign Up for an account on Google Cloud
 If you do not already have an account on Google Cloud, you can create one [here](https://console.cloud.google.com).
