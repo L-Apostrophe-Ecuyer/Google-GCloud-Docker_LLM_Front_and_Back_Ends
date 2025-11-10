@@ -27,9 +27,9 @@ The following videos provide a walkthrough of some key concepts when working wit
 ### 1. Create a Google Cloud Project
 Create a Google Cloud project with the following:
 
-- Project Name: `hw5-STUDENT_ID`
+- Project Name: `hw5-20103530`
 
-- Project ID: `hw5-STUDENT_ID`
+- Project ID: `hw5-20103530`
 
 Make sure to set both the project name and project ID to be the **same value**. **You cannot change the project ID afterwards. The name and ID should be case sensitive.**
 
@@ -44,9 +44,9 @@ Instructions to install gcloud can be found [here](https://cloud.google.com/sdk/
 
 Once you install gcloud, use it to set your project:
 ```
-gcloud config set project MY_PROJECT_ID
+gcloud config set project hw5-20103530
 ```
-where `MY_PROJECT_ID` is the Project ID created in Step 1.
+where `hw5-20103530` is the Project ID created in Step 1.
 
 You can verify that you're running in the correct project by running:
 ```
@@ -69,10 +69,7 @@ A docker repository is required to store the Docker images we will build using G
 
 You can create a repository on Artifact Registry by running the following command:
 ```
-gcloud artifacts repositories create REPO_NAME \
-    --repository-format=docker \
-    --location=LOCATION \
-    --project=PROJECT_ID
+gcloud artifacts repositories create REPO_NAME --repository-format=docker --location=LOCATION  --project=hw5-20103530
 ```
 
 Make sure to set the following:
@@ -82,7 +79,7 @@ Make sure to set the following:
 
 You can verify that your repository has been created by running the following command:
 ```
-gcloud artifacts repositories list --project=PROJECT_ID
+gcloud artifacts repositories list --project=hw5-20103530
 ```
 
 ### 5. Verify Prerequisites
