@@ -1,0 +1,62 @@
+steps:
+  # Step 1 builds the "base" Docker image
+  # The base Docker image should be tagged with ${BUILD_ID} and `latest`.
+  - name: "gcr.io/cloud-builders/docker" # Tells Cloudbuild that this step involves Docker
+    id: build-base-image # Unique name that describes this step
+    args:
+      - "build"
+      - "--tag"
+      - "${_BASE_IMAGE_URI}:${BUILD_ID}"
+      - "--tag"
+      - "${_BASE_IMAGE_URI}:latest"
+      - "-f"
+      - "Dockerfile.base"
+      - "."
+
+  # Step 2 pushes the "base" Docker image to the Artifact registry
+  # with the tag ${BUILD_ID}
+  - name: "gcr.io/cloud-builders/docker"
+    id: push-base-buildid
+    args:
+      - "push"
+      - "${_BASE_IMAGE_URI}:${BUILD_ID}"
+
+  # Step 3 pushes the "base" Docker image to the Artifact registry
+  # with the tag `latest`.
+  - name: "gcr.io/cloud-builders/docker"
+    id: push-base-latest
+    args:
+      - "push"
+      - "${_BASE_IMAGE_URI}:latest"
+
+  # Step 4 builds the "target" Docker image
+  # (could be frontend_v1, frontend_v2, backend_v1 or backend_v2).
+  - name: "gcr.io/cloud-builders/docker"
+    id: build-target-image
+    args:
+      - "build"
+      - "--tag"
+      - "${_APP_URI}:${BUILD_ID}"
+      - "--build-arg"
+      - "BASE_IMAGE=${_BASE_IMAGE_URI}:${BUILD_ID}"
+      - "--build-arg"
+      - "SERVING_PORT=${_SERVING_PORT}"
+      - "-f"
+      - "${_TARGET_DOCKERFILE}"
+      - "."
+
+  # Step 5 pushes this Docker image to the Artifact Registry.
+  # Important that it has a different name than the base image, frontend and/or backend.
+  - name: "gcr.io/cloud-builders/docker"
+    id: push-target-image
+    args:
+      - "push"
+      - "${_APP_URI}:${BUILD_ID}"
+
+substitutions:
+  _APP_URI: required
+  _BASE_IMAGE_URI: required
+  _SERVING_PORT: required
+  _TARGET_DOCKERFILE: required
+options:
+  substitutionOption: 'ALLOW_LOOSE'

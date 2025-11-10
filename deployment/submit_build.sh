@@ -1,17 +1,27 @@
 #!/bin/bash
-REGION="" # FILL ME IN
-PROJECT_ID="" # FILL ME IN
+REGION="us-central1"
+PROJECT_ID="hw5-20103530"
 
 
 # This makes sure that we are uploading our code from the proper path.
 # Don't change this line.
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-REPO_NAME="" # FILL ME IN
-REGISTRY= "" # FILL ME IN
-APP_IMAGE="" # FILL ME IN
+REPO_NAME="hw5-images"
+REGISTRY="${REGION}-docker.pkg.dev"
+APP_IMAGE="backend_v1"  # Ou "frontend_v1", "backend_v2", etc.
 TARGET_DOCKERFILE="Dockerfile.${APP_IMAGE}"
-SERVING_PORT= # FILL ME IN
+
+# PORT SPÉCIFIQUE PAR APPLICATION
+if [[ "$APP_IMAGE" == backend_* ]]; then
+    if [[ "$APP_IMAGE" == *v3 ]]; then
+        SERVING_PORT=8080  # Backend V3
+    else
+        SERVING_PORT=8000  # Backend V1 & V2
+    fi
+else
+    SERVING_PORT=8501  # Frontend Streamlit
+fi
 
 # It's not expected to know bash scripting to the level below.
 # The following is known as substitutions in cloud build.

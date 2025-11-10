@@ -1,6 +1,6 @@
 #!/bin/bash
 REGION="us-central1"
-PROJECT_ID="hw5-12345"
+PROJECT_ID="hw5-20103530"
 
 # This is the service you will be deploying.
 # Call this backendv1, backendv2, frontendv1, or frontendv2
