@@ -4,8 +4,11 @@ PROJECT_ID="hw5-20103530"
 
 
 # This makes sure that we are uploading our code from the proper path.
-# Don't change this line.
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+# Don't change this line. - THIS BREAKS ON SPACES DID YOU KNOW? I KNOW!! HOW FUN TO KNOW!!!
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd ) 
+
+
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/"
 
 REPO_NAME="hw5-images"
 REGISTRY="${REGION}-docker.pkg.dev"
